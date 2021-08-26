@@ -1,0 +1,57 @@
+<!DOCTYPE />
+<!--
+*  Agente de venda de bilhetes de metrô:                          *
+*   Considere um agente que faz a venda de bilhetes de metrô.     *
+*   Por cada percepção, o agente recebe o valor pago pelo bilhete *
+*   A ação devolvida poderá ser a quantia certa, o valor          *
+*   correspondente ao troco ou um aviso de quantia insuficiente.  *
+-->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Marcela Amorim" />
+    <meta name="author" content="Guilherme Kojima" />
+    <title>Vendedor de ticket</title>
+  </head>
+  <body>
+    <h3>Agente vendedor de ticket</h3>
+    <p>Clique no botão para realizar a compra do bilhete</p>
+    <div>
+      <button onclick="agenteMetro()">Comprar bilhete</button>
+    </div>
+    <script>
+      function randonInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      function agenteMetro() {
+        let custoBilhete = randonInt(5, 10);
+        let quantiaIntroduzida = prompt(
+          "Digite o valor do pagamento recebido: "
+        );
+        let retorno = "";
+
+        if (custoBilhete == quantiaIntroduzida) {
+          retorno = "Quantia correta, obrigada!";
+          console.log("Valor do bilhete: ", custoBilhete);
+          console.log(retorno);
+        }
+        if (custoBilhete > quantiaIntroduzida) {
+          retorno =
+            "Quantia insuficiente, falta: " +
+            (custoBilhete - quantiaIntroduzida);
+          console.log(retorno);
+          console.log("Valor do bilhete: ", custoBilhete);
+        }
+
+        if (custoBilhete < quantiaIntroduzida) {
+          retorno = "O troco é: " + (quantiaIntroduzida - custoBilhete);
+          console.log(retorno);
+          console.log("Valor do bilhete: ", custoBilhete);
+        }
+      }
+    </script>
+  </body>
+</html>
